@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { CharactersState } from "../../types/store/characters";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {CharacterInterface, CharactersState} from "../../types/store/characters";
 
 const initialState: CharactersState = {
   characters: [],
@@ -11,13 +11,13 @@ export const characterSlice = createSlice({
   name: "characters",
   initialState,
   reducers: {
-    getCharacters(state: CharactersState, action) {
+    getCharacters(state: CharactersState, action: PayloadAction <CharacterInterface[]>) {
       state.characters = action.payload
     },
-    setIsLoading: (state: CharactersState, action) => {
+    setIsLoading: (state: CharactersState, action: PayloadAction <boolean>) => {
       state.isLoading =  action.payload
     },
-    setError: (state: CharactersState, action) => {
+    setError: (state: CharactersState, action: PayloadAction<string>) => {
       state.error = action.payload
     }
   },

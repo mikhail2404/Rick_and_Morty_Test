@@ -7,7 +7,7 @@ import './scss/styles.scss'
 import NavBar from "./components/NavBar/NavBar";
 import OverlayWithSpinner from "./components/Overlay/OverlaySpiner";
 
-function App() {
+const App: React.FC = () => {
 
 
   return (

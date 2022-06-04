@@ -6,23 +6,23 @@
   cursor: pointer;
 
   &--primary {
-    border: 2px solid #105640;
-    background-color: #105640;
+    border: 2px solid $color-green-light;
+    background-color: $color-green-light;
     color: $color-white;
     font-weight: bold;
     &:hover {
-      color: #105640;
+      color: $color-green-light;
       background-color: transparent;
     }
   }
 
   &--secondary {
-    border: 2px solid #de0055;
-    background-color: #de0055;
+    border: 2px solid $color-red;
+    background-color: $color-red;
     color: $color-white;
     font-weight: bold;
     &:hover {
-      color: #de0055;
+      color: $color-red;
       background-color: transparent;
     }
   }

@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import {FiltersStateType} from "../../types/store/filters";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {FilterOptions, FiltersStateType, SelectedFiltersState} from "../../types/store/filters";
 
 
 const initialState: FiltersStateType = {
@@ -15,10 +15,10 @@ export const filtersSlice = createSlice({
     name: 'filters',
     initialState,
     reducers: {
-        setFilterOptions: (state: FiltersStateType, action) => {
+        setFilterOptions: (state: FiltersStateType, action: PayloadAction<FilterOptions>) => {
             state.filtersOptions =  action.payload
         },
-        setFilters: (state: FiltersStateType, action) => {
+        setFilters: (state: FiltersStateType, action: PayloadAction<SelectedFiltersState>) => {
             state.filtersState = action.payload
         },
         resetFilters: (state: FiltersStateType) => {

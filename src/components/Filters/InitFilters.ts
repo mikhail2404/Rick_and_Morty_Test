@@ -6,7 +6,7 @@ import {Info} from "../../types/store/info";
 import {CHARACTERS_URL} from "../../common/const";
 import {setError, setIsLoading} from "../../store/slices/characterSlice";
 import {setFilterOptions} from "../../store/slices/filtersSlice";
-import {changeCurrentURL, setCount, setPages} from "../../store/slices/infoSlice";
+import {changeCurrentURL, setCount} from "../../store/slices/infoSlice";
 import {fillFilterOptions} from "../../helpers/fillFilterOptions";
 
 const InitFilters = () => {
@@ -18,22 +18,25 @@ const InitFilters = () => {
     useEffect(
         () => {
             dispatch(setIsLoading(true));
+
             const getCharacters = async (url: string) => {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    dispatch(setIsLoading(true));
-                    dispatch(setError('Something goes wrong...'));
-                    throw new Error('Something goes wrong...')
+                try{
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    setCharacters((prevCharacters) => {
+                        return [...prevCharacters, ...data.results];
+                    });
+                    setInfo(data.info);
+                    setUrl(data.info.next)
+                }catch (e){
+                    if(e instanceof TypeError){
+                        dispatch(setIsLoading(false));
+                        dispatch(setError('Something went wrong...'))
+                    }
                 }
-                const data = await response.json();
-                setCharacters((prevCharacters) => {
-                    return [...prevCharacters, ...data.results];
-                });
-                setInfo(data.info);
-                setUrl(data.info.next)
             }
 
-            if (url !== null) {
+            if (url) {
                 getCharacters(url)
             } else {
                 const { genderOptions, speciesOptions, statusOptions } = fillFilterOptions(characters);
@@ -43,8 +46,7 @@ const InitFilters = () => {
                     speciesOptions: [...speciesOptions, 'empty'],
                     statusOptions: [...statusOptions, 'empty']
                 }));
-                dispatch(setPages(info?.pages))
-                dispatch(setCount(info?.count))
+                dispatch(setCount(info?.count!))
                 dispatch(changeCurrentURL(`${CHARACTERS_URL}/?page=1`))
             }
         }, [url]

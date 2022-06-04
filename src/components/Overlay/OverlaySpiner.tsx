@@ -1,8 +1,9 @@
 import React from 'react';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import Spinner from "../../ui/spinner/Spinner";
-import {ReactComponent as Exit} from "../../assets/icons/exit.svg";
 import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 const OverlayWithSpinner = () => {
     const isLoading = useTypedSelector((state) => state.characters.isLoading)

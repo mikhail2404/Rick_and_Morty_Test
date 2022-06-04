@@ -3,8 +3,8 @@ import { CharacterInterface } from "../../types/store/characters";
 import {ReactComponent as Exit} from "../../assets/icons/exit.svg";
 import React from "react";
 
-Modal.setAppElement("#root");
 
+Modal.setAppElement("#root");
 interface OverlayProps {
   isOpen: boolean;
   info: CharacterInterface;

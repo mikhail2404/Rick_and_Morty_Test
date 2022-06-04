@@ -1,12 +1,14 @@
+export interface FilterOptions {
+  genderOptions: string[],
+  speciesOptions: string[],
+  statusOptions: string[],
+}
+
+export interface SelectedFiltersState {
+  [key: string]: string
+}
+
 export interface FiltersStateType {
-    filtersOptions: {
-        genderOptions: string[],
-        speciesOptions: string[],
-        statusOptions: string[],
-    },
-    filtersState: {
-        selectedGender: string,
-        selectedStatus: string,
-        selectedSpecies: string
-    } | null
+  filtersOptions: FilterOptions,
+  filtersState: SelectedFiltersState | null
 }

@@ -1,7 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {InfoState} from "../../types/store/info";
-
-
 
 const initialState: InfoState = {
     count: 0,
@@ -14,19 +12,16 @@ export const infoSlice = createSlice({
     name: 'info',
     initialState,
     reducers: {
-        setPages: (state: InfoState, action) => {
-            state.pages =  action.payload
-        },
-        changeCurrentURL: (state: InfoState, action) => {
+        changeCurrentURL: (state: InfoState, action: PayloadAction<string>) => {
             state.currentURL = action.payload
         },
-        setCount: (state: InfoState, action) => {
+        setCount: (state: InfoState, action: PayloadAction<number>) => {
             state.count = action.payload
         },
-        setCurrentPage: (state: InfoState, action) => {
+        setCurrentPage: (state: InfoState, action: PayloadAction<number>) => {
             state.currentPage = action.payload
         }
     }
 });
 
-export const {setPages, changeCurrentURL, setCount, setCurrentPage} = infoSlice.actions;
+export const {changeCurrentURL, setCount, setCurrentPage} = infoSlice.actions;

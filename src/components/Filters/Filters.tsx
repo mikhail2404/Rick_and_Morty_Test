@@ -22,7 +22,7 @@ const Filters: FC = () => {
     const dispatch = useDispatch()
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        setFilterValues(prev => ({...(prev === null ? {} : prev), [e.target.name]: e.target.value}))
+        setFilterValues(prev => ({...(!prev ? {} : prev), [e.target.name]: e.target.value}))
     }
 
     const handleSubmitFilters = (e: FormEvent<HTMLFormElement>) => {
