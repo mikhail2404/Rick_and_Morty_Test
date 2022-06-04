@@ -1,0 +1,23 @@
+.watch-list{
+  margin-top: 2rem;
+  &__form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input {
+      margin-right: 0.5rem;
+      color: #93BA37;
+      background: #273c75;
+      outline: none;
+      border: 1px solid #93BA37;
+      border-radius: 10px;
+      padding: 0.2rem 0;
+      text-indent: 10px;
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+  }
+}

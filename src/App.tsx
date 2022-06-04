@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Characters from "./pages/Characters/Characters";
+import MyWatchList from "./pages/WatchList/MyWatchList";
+import InitFilters from "./components/Filters/InitFilters";
+import './scss/styles.scss'
+import NavBar from "./components/NavBar/NavBar";
+import OverlayWithSpinner from "./components/Overlay/OverlaySpiner";
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app__container">
+      <Router>
+        <OverlayWithSpinner />
+        <NavBar />
+        <InitFilters />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Characters />} />
+            <Route path="/my-watch-list" element={<MyWatchList />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }

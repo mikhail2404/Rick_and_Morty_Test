@@ -1,0 +1,31 @@
+.characters {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    padding: 2rem;
+  &__container {
+    flex-basis: 75%;
+  }
+
+  &__filter {
+    flex-basis: 25%;
+    padding: 1rem;
+    max-width: 300px;
+  }
+
+  &__paginator {
+    text-align: center;
+    margin: 0 auto;
+    flex-basis: 25%;
+    padding: 1rem;
+    max-width: 400px;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+}
